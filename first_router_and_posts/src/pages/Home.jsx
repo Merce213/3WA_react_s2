@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { usePostContext } from "../context/PostContext";
 
 const Home = () => {
@@ -11,9 +12,9 @@ const Home = () => {
 			{state.posts.length > 0 ? (
 				<ul>
 					{state.posts.map((post) => (
-						<li key={post.id}>
-							<h2>{post.title}</h2>
-						</li>
+						<Link key={post.id} to={`/post/${post.id}`}>
+							<li>{post.title}</li>
+						</Link>
 					))}
 				</ul>
 			) : (

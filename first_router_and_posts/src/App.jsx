@@ -1,7 +1,8 @@
+import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import NewPost from "./pages/NewPost";
-import "./App.css";
+import Post from "./pages/Post";
 
 const App = () => {
 	return (
@@ -28,7 +29,7 @@ const App = () => {
 					Home
 				</NavLink>
 				<NavLink
-					to="/new-post"
+					to="/post/new"
 					style={({ isActive }) =>
 						isActive
 							? {
@@ -43,7 +44,9 @@ const App = () => {
 
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/new-post" element={<NewPost />} />
+				<Route path="/post/new" element={<NewPost />} />
+				<Route path="/post/:id" element={<Post />} />
+				<Route path="*" element={<h1>Page Not found</h1>} />
 			</Routes>
 		</>
 	);
