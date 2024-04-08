@@ -22,9 +22,7 @@ const App = () => {
 							? {
 									color: "red",
 							  }
-							: {
-									color: "black",
-							  }
+							: {}
 					}
 				>
 					Home
