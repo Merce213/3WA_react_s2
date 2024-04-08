@@ -32,6 +32,12 @@ const postReducer = (state, action) => {
 				error: "",
 			};
 
+		case "DELETE_POST":
+			return {
+				...state,
+				posts: state.posts.filter((post) => post.id !== action.payload),
+			};
+
 		case "SET_ERROR":
 			return {
 				...state,
