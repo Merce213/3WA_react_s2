@@ -1,8 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+import Result from "./pages/Result";
+import Rules from "./pages/Rules";
+import Home from "./pages/Home";
+
 const App = () => {
 	return (
-		<div>
-			<h1>App</h1>
-		</div>
+		<>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/rules" element={<Rules />} />
+				<Route path="/result" element={<Result />} />
+			</Routes>
+		</>
 	);
 };
 
