@@ -1,15 +1,27 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
+import {
+	selectDragonError,
+	selectDragonName,
+	selectDragons,
+} from "./store/selectors/dragonSelector";
+import {
+	addDragon,
+	deleteDragon,
+	setDragonError,
+	setDragonName,
+} from "./store/actions/dragonAction";
 
 const App = () => {
 	const dispatch = useDispatch();
-	const dragons = useSelector((state) => state.dragons);
-	const name = useSelector((state) => state.name);
-	const error = useSelector((state) => state.error);
+
+	const dragons = useSelector(selectDragons);
+	const name = useSelector(selectDragonName);
+	const error = useSelector(selectDragonError);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		dispatch({ type: "SET_VALUE", payload: { name, value } });
+		dispatch(setDragonName({ name, value }));
 	};
 
 	const handleSubmit = (e) => {
@@ -18,24 +30,22 @@ const App = () => {
 		if (
 			name.trim() === "" ||
 			dragons.find(
-				(d) =>
-					(d.name.toLowerCase() === name.toLowerCase()) !== undefined
-			)
+				(dragon) => dragon.name.toLowerCase() === name.toLowerCase()
+			) !== undefined
 		) {
-			dispatch({
-				type: "SET_ERROR",
-				payload:
-					name.trim() === ""
-						? "Please enter a dragon name"
-						: "Dragon name already exists",
-			});
+			dispatch(
+				setDragonError(
+					"Please enter a unique dragon name that is not an empty string"
+				)
+			);
 			return;
 		}
-		dispatch({ type: "ADD_DRAGON" });
+
+		dispatch(addDragon());
 	};
 
 	const handleDelete = (id) => {
-		dispatch({ type: "DELETE_DRAGON", payload: id });
+		dispatch(deleteDragon(id));
 	};
 
 	return (

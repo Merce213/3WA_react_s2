@@ -1,3 +1,10 @@
+import {
+	DRAGON_SET_VALUE,
+	DRAGON_ADD,
+	DRAGON_SET_ERROR,
+	DRAGON_DELETE,
+} from "../constants/action-type";
+
 const initialState = {
 	dragons: [],
 	name: "",
@@ -6,14 +13,14 @@ const initialState = {
 
 const dragonReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case "SET_VALUE":
+		case DRAGON_SET_VALUE:
 			return {
 				...state,
 				[action.payload.name]: action.payload.value,
 				error: "",
 			};
 
-		case "ADD_DRAGON":
+		case DRAGON_ADD:
 			return {
 				...state,
 				dragons: [
@@ -27,7 +34,7 @@ const dragonReducer = (state = initialState, action) => {
 				error: "",
 			};
 
-		case "DELETE_DRAGON":
+		case DRAGON_DELETE:
 			return {
 				...state,
 				dragons: state.dragons.filter(
@@ -35,7 +42,7 @@ const dragonReducer = (state = initialState, action) => {
 				),
 			};
 
-		case "SET_ERROR":
+		case DRAGON_SET_ERROR:
 			return {
 				...state,
 				error: action.payload,
