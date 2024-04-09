@@ -30,7 +30,8 @@ const App = () => {
 		if (
 			name.trim() === "" ||
 			dragons.find(
-				(dragon) => dragon.name.toLowerCase() === name.toLowerCase()
+				(dragon) =>
+					dragon.name.toLowerCase() === name.toLowerCase().trim()
 			) !== undefined
 		) {
 			dispatch(

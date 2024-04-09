@@ -3,7 +3,7 @@ import {
 	DRAGON_ADD,
 	DRAGON_SET_ERROR,
 	DRAGON_DELETE,
-} from "../constants/action-type";
+} from "../constants/dragonConstant";
 
 const initialState = {
 	dragons: [],

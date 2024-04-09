@@ -3,7 +3,7 @@ import {
 	DRAGON_ADD,
 	DRAGON_SET_ERROR,
 	DRAGON_DELETE,
-} from "../constants/action-type";
+} from "../constants/dragonConstant";
 
 export const setDragonName = (payload) => ({
 	type: DRAGON_SET_VALUE,
