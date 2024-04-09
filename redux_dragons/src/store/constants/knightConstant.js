@@ -1,0 +1,4 @@
+export const KNIGHT_SET_VALUE = "KNIGHT/SET_VALUE";
+export const KNIGHT_ADD = "KNIGHT/ADD";
+export const KNIGHT_DELETE = "KNIGHT/DELETE";
+export const KNIGHT_SET_ERROR = "KNIGHT/SET_ERROR";
