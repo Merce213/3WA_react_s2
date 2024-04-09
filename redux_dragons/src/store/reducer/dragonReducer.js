@@ -1,9 +1,6 @@
 const initialState = {
 	dragons: [],
-	dragon: {
-		name: "",
-	},
-
+	name: "",
 	error: "",
 };
 
@@ -12,10 +9,7 @@ const dragonReducer = (state = initialState, action) => {
 		case "SET_VALUE":
 			return {
 				...state,
-				dragon: {
-					...state.dragon,
-					[action.payload.name]: action.payload.value,
-				},
+				[action.payload.name]: action.payload.value,
 				error: "",
 			};
 
@@ -26,12 +20,10 @@ const dragonReducer = (state = initialState, action) => {
 					...state.dragons,
 					{
 						id: Date.now(),
-						...state.dragon,
+						name: state.name.trim(),
 					},
 				],
-				dragon: {
-					name: "",
-				},
+				name: "",
 				error: "",
 			};
 

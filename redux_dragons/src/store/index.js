@@ -3,10 +3,7 @@ import dragonReducer from "./reducer/dragonReducer";
 
 const store = createStore(dragonReducer, {
 	dragons: [],
-	dragon: {
-		name: "",
-	},
-
+	name: "",
 	error: "",
 });
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 const App = () => {
 	const dispatch = useDispatch();
 	const dragons = useSelector((state) => state.dragons);
-	const dragon = useSelector((state) => state.dragon);
+	const name = useSelector((state) => state.name);
 	const error = useSelector((state) => state.error);
 
 	const handleChange = (e) => {
@@ -15,11 +15,23 @@ const App = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (dragon.name.trim() !== "") {
-			dispatch({ type: "ADD_DRAGON" });
-		} else {
-			dispatch({ type: "SET_ERROR", payload: "Name cannot be empty" });
+		if (
+			name.trim() === "" ||
+			dragons.find(
+				(d) =>
+					(d.name.toLowerCase() === name.toLowerCase()) !== undefined
+			)
+		) {
+			dispatch({
+				type: "SET_ERROR",
+				payload:
+					name.trim() === ""
+						? "Please enter a dragon name"
+						: "Dragon name already exists",
+			});
+			return;
 		}
+		dispatch({ type: "ADD_DRAGON" });
 	};
 
 	const handleDelete = (id) => {
@@ -34,7 +46,7 @@ const App = () => {
 					type="text"
 					name="name"
 					placeholder="Enter dragon name"
-					value={dragon.name}
+					value={name}
 					onChange={handleChange}
 				/>
 				<button type="submit">Add</button>
