@@ -11,6 +11,7 @@ import {
 	setKnightError,
 	setKnightValue,
 } from "../store/actions/knightAction";
+import { selectLogs } from "../store/selectors/middlewareSelector";
 
 const Knights = () => {
 	const dispatch = useDispatch();
@@ -19,6 +20,9 @@ const Knights = () => {
 	const age = useSelector(selectKnightAge);
 	const knights = useSelector(selectKnights);
 	const error = useSelector(selectKnightError);
+
+	const logs = useSelector(selectLogs);
+	const logsKnights = logs.filter((log) => log.actionName.includes("KNIGHT"));
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -98,6 +102,19 @@ const Knights = () => {
 				</div>
 			) : (
 				<p>No knights</p>
+			)}
+
+			{logsKnights.length > 0 && (
+				<div>
+					<p>Logs</p>
+					<div>
+						{logsKnights.map((log) => (
+							<p key={log.id}>
+								{log.actionName} at {log.time} on {log.date}
+							</p>
+						))}
+					</div>
+				</div>
 			)}
 		</div>
 	);

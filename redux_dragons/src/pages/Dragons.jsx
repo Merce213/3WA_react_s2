@@ -10,6 +10,7 @@ import {
 	setDragonError,
 	setDragonName,
 } from "../store/actions/dragonAction";
+import { selectLogs } from "../store/selectors/middlewareSelector";
 
 const Dragons = () => {
 	const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const Dragons = () => {
 	const dragons = useSelector(selectDragons);
 	const name = useSelector(selectDragonName);
 	const error = useSelector(selectDragonError);
+
+	const logs = useSelector(selectLogs);
+	const logsDragons = logs.filter((log) => log.actionName.includes("DRAGON"));
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -79,6 +83,19 @@ const Dragons = () => {
 				</div>
 			) : (
 				<p>No dragons</p>
+			)}
+
+			{logsDragons.length > 0 && (
+				<div>
+					<p>Logs</p>
+					<div>
+						{logsDragons.map((log) => (
+							<p key={log.id}>
+								{log.actionName} at {log.time} on {log.date}
+							</p>
+						))}
+					</div>
+				</div>
 			)}
 		</div>
 	);
