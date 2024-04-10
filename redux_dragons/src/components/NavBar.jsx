@@ -21,6 +21,9 @@ const NavBar = () => {
 				<NavLink style={checkIsActive} to="/knights">
 					Knights
 				</NavLink>
+				<NavLink style={checkIsActive} to="/couples">
+					Couples
+				</NavLink>
 			</nav>
 		</header>
 	);
