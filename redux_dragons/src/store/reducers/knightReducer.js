@@ -6,7 +6,18 @@ import {
 } from "../constants/knightConstant";
 
 const initialState = {
-	knights: [],
+	knights: [
+		{
+			id: 1712747513880,
+			name: "Arthur",
+			age: 35,
+		},
+		{
+			id: 1712747513882,
+			name: "Lancelot",
+			age: 30,
+		},
+	],
 	name: "",
 	age: 1,
 	error: "",

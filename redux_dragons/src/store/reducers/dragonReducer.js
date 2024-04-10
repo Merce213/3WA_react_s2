@@ -6,7 +6,16 @@ import {
 } from "../constants/dragonConstant";
 
 const initialState = {
-	dragons: [],
+	dragons: [
+		{
+			id: 1712747513860,
+			name: "Smaug",
+		},
+		{
+			id: 1712747513862,
+			name: "Drogon",
+		},
+	],
 	name: "",
 	error: "",
 };

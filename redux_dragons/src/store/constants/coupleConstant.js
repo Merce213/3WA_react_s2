@@ -1,1 +1,3 @@
 export const COUPLE_ADD = "COUPLE/ADD";
+export const COUPLE_SET_VALUE = "COUPLE/SET_VALUE";
+export const COUPLE_SET_ERROR = "COUPLE/SET_ERROR";
