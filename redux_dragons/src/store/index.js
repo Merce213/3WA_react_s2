@@ -8,6 +8,7 @@ import knightReducer from "./reducers/knightReducer";
 import middlewareReducer from "./reducers/middlewareReducer";
 import { addLog } from "./actions/middlewareAction";
 import { MIDDLEWARE_ADD_LOG } from "./constants/middlewareConstant";
+import coupleReducer from "./reducers/coupleReducer";
 
 const logMiddleware = (store) => (next) => (action) => {
 	next(action);
@@ -22,6 +23,7 @@ const store = createStore(
 		dragons: dragonReducer,
 		knights: knightReducer,
 		logs: middlewareReducer,
+		couples: coupleReducer,
 	}),
 	applyMiddleware(logMiddleware)
 );
