@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "../features/todosSlice";
 
 export default configureStore({
-	reducer: {},
+	reducer: {
+		todos: todosReducer,
+	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
