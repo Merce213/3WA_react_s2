@@ -43,6 +43,7 @@ export const editTodoCompleted = createAsyncThunk(
 			{
 				method: "PATCH",
 				body: JSON.stringify({
+					id,
 					completed,
 				}),
 				headers: {
@@ -61,6 +62,9 @@ export const removeTodo = createAsyncThunk("todos/removeTodo", async (id) => {
 		`https://jsonplaceholder.typicode.com/todos/${id}`,
 		{
 			method: "DELETE",
+			headers: {
+				"Content-type": "application/json",
+			},
 		}
 	);
 	const data = await response.json();
@@ -128,7 +132,6 @@ const todosSlice = createSlice({
 			.addCase(addNewTodo.fulfilled, (state, action) => {
 				state.todos.push({
 					...action.payload,
-					id: state.id,
 				});
 				state.todo.title = "";
 				state.id++;
