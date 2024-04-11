@@ -1,10 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, setTodoTitle } from "../features/todosSlice";
+// import { addTodo, setTodoTitle } from "../features/todosSlice";
+import {
+	addNewTodo,
+	selectTodoTitle,
+	setTodoTitle,
+} from "../features/todosSlice";
 
 const AddTodoForm = () => {
 	const dispatch = useDispatch();
 
-	const title = useSelector((state) => state.todos.todo.title);
+	const title = useSelector(selectTodoTitle);
 
 	const handleChange = (e) => {
 		const { value } = e.target;
@@ -19,11 +24,7 @@ const AddTodoForm = () => {
 			return;
 		}
 
-		dispatch(
-			addTodo({
-				title,
-			})
-		);
+		dispatch(addNewTodo(title));
 	};
 
 	return (

@@ -1,15 +1,21 @@
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo } from "../features/todosSlice";
+import { editTodoCompleted, removeTodo } from "../features/todosSlice";
+// import { deleteTodo, editTodo } from "../features/todosSlice";
 
 const TodoItem = ({ todo }) => {
 	const dispatch = useDispatch();
 
 	const toggleCompleted = () => {
-		dispatch(editTodo(todo.id));
+		dispatch(
+			editTodoCompleted({
+				id: todo.id,
+				completed: !todo.completed,
+			})
+		);
 	};
 
 	const handleDelete = () => {
-		dispatch(deleteTodo(todo.id));
+		dispatch(removeTodo(todo.id));
 	};
 
 	return (
@@ -22,7 +28,11 @@ const TodoItem = ({ todo }) => {
 		>
 			<span>{todo.completed ? "✅" : "❌"}</span>
 			<p>{todo.title}</p>
-			<input type="checkbox" onChange={toggleCompleted} />
+			<input
+				type="checkbox"
+				onChange={toggleCompleted}
+				checked={todo.completed}
+			/>
 			<button onClick={handleDelete}>Delete</button>
 		</li>
 	);
